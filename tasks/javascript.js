@@ -20,7 +20,7 @@ function handleErrors() {
 
 function javascript() {
   const b = browserify({
-    entries: srcPath.app,
+    entries: srcPath.entries,
     extensions: ['.js'],
   });
 

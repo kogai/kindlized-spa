@@ -4,9 +4,11 @@ module.exports = (config)=> {
     files: [
       'node_modules/phantomjs-polyfill/bind-polyfill.js',
       'test/*.js',
+      'test/**/*.js',
     ],
     preprocessors: {
       ['test/*']: ['browserify'],
+      ['test/**/*']: ['browserify'],
     },
     browserify: {
       debug: !process.env.CI,

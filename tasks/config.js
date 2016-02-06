@@ -21,8 +21,12 @@ const srcPath = {
     stylesheet: `${srcRoot}/stylesheets`,
     image: `${srcRoot}/images`,
   },
-  app: [
+  entries: [
     `${srcRoot}/app/index.js`,
+  ],
+  app: [
+    `${srcRoot}/app/*`,
+    `${srcRoot}/app/**/*`,
   ],
   stylesheet: [
     `${srcRoot}/stylesheets/*`,
