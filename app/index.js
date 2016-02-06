@@ -1,58 +1,21 @@
 /** @jsx element */
 
 import { dom, element } from 'deku';
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
+
+import rootReducer from 'app/reducers/rootReducer';
+import myAction from 'app/actionCreators/myAction';
+import InputBox from 'app/components/InputBox';
 
 const { createRenderer } = dom;
 
-const EVENT_NAME = 'EVENT_NAME';
-
-function myAction(dispatch) {
-  return ()=> {
-    dispatch({
-      type: EVENT_NAME,
-    });
-  };
-}
-
-const InputBox = {
-  propTypes: {
-    iconType: String,
-    name: String,
-  },
-  render({ props, dispatch }) {
-    return (
-      <section>
-        <input type="text" />
-        <button
-          className={ `glyphicon-${props.iconType}` }
-          onClick={ myAction(dispatch) }
-          type="button"
-        >{ props.name }</button>
-      </section>
-    );
-  },
-};
-
-function myReducer(state = {}, action) {
-  switch (action.type) {
-    case EVENT_NAME:
-      return {};
-    default:
-      return state;
-  }
-}
-
-const rootReducer = combineReducers({ myReducer });
-
+// const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 const store = createStore(rootReducer);
 const render = createRenderer(document.body, store.dispatch);
 
 render(
-  <div>
-    <InputBox iconType="search" name="探す" />
-    <InputBox iconType="plus" name="追加する" />
-  </div>,
+  <InputBox action={ myAction } iconType="search" name="探す" />,
   store.getState()
 );
 

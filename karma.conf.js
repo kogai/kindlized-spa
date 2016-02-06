@@ -15,7 +15,7 @@ module.exports = (config)=> {
       transform: ['babelify'],
     },
     singleRun: process.env.CI,
-    frameworks: ['mocha', 'sinon', 'browserify'],
+    frameworks: ['mocha', 'browserify'],
     autoWatch: !process.env.CI,
     reporters: ['mocha'],
     browsers: process.env.CI ? ['PhantomJS', 'Chrome', 'Firefox'] : ['PhantomJS'],

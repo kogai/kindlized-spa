@@ -5,20 +5,28 @@ import { element } from 'deku';
 const propTypes = {
   iconType: String,
   name: String,
+  action: Function,
 };
 
-const render = ({ props })=> (
+export function onInput(ev) {
+  console.log('inpute value:', ev.target.value);
+}
+
+const render = ({ props, dispatch })=> (
   <section>
-    <input type="text" />
+    <input
+      onInput={ props.onInput }
+      type="text"
+    />
     <button
       class={ `glyphicon-${props.iconType}` }
-      // onClick={ myAction(dispatch) }
+      onClick={ props.onClick(dispatch) }
       type="button"
     >{ props.name }</button>
   </section>
 );
 
-export {
+export default {
   propTypes,
   render,
 };
