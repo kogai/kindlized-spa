@@ -22,7 +22,7 @@ const srcPath = {
     image: `${srcRoot}/images`,
   },
   entries: [
-    `${srcRoot}/app/index.js`,
+    `${srcRoot}/app/entries/home.js`,
   ],
   app: [
     `${srcRoot}/app/*`,
@@ -48,6 +48,7 @@ const srcPath = {
 };
 
 srcPath.javascript = srcPath.app;
+srcPath.copy = srcPath.font.concat[`${srcPath.root}/*.html`];
 exports.srcPath = srcPath;
 
 exports.destPath = {
