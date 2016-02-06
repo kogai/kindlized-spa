@@ -1,14 +1,8 @@
 import { combineReducers } from 'redux';
+import edit from './edit';
+import search from './search';
 
-const EVENT_NAME = 'EVENT_NAME';
-
-function myReducer(state = {}, action) {
-  switch (action.type) {
-    case EVENT_NAME:
-      return {};
-    default:
-      return state;
-  }
-}
-
-export default combineReducers({ myReducer });
+export default combineReducers({
+  edit,
+  search,
+});

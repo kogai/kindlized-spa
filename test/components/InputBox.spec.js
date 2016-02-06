@@ -17,8 +17,9 @@ describe('Components: InputBox', ()=> {
     onInputSpy = sinon.spy(onInput);
     node = renderIntoDocument(
       <InputBox
-        iconType={ iconTypeMock } name={ nameMock }
+        name={ nameMock }
         onClick={ clickSpy } onInput={ onInputSpy }
+        type={ iconTypeMock }
       />
     );
 
