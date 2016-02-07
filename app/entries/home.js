@@ -32,8 +32,9 @@ function main() {
           icon="search"
         />
       </div>
+      <Panels iterateTo="search" />
       <Pagenation />
-      <Panels />
+      <Panels iterateTo="panels" />
       <Pagenation />
     </Layout>,
     store.getState()

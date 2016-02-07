@@ -31,25 +31,26 @@ const imgStyle = objectToCss({
   height: '160px',
 });
 
-function onCreate({ dispatch }) {
-  fetchBooks(dispatch)(1);
+function onCreate({ dispatch, props }) {
+  if (props.iterateTo === 'panels') {
+    fetchBooks(dispatch)(1);
+  }
 }
 
-function onUpdate() {
-  console.log('onUpdate');
-}
-
-function render({ context }) {
+function render({ props, context }) {
+  const panels = context[props.iterateTo].books;
   return (
     <ul class="row" style={ pannelsStyle }>
       {
-        context.panels.map((m)=> <Panel
+        panels.map((m)=> <Panel
           isKindlized={ m.isKindlized }
           isRegisterd={ m.isRegisterd }
           isLoading={ m.isLoading }
           url={ m.url }
           title={ m.title }
           imgSrc={ m.images }
+          ASIN={ m.ASIN }
+          _id={ m._id }
           titleStyle={ titleStyle }
           pannelStyle={ pannelStyle }
           buttonStyle={ buttonStyle }
@@ -61,7 +62,6 @@ function render({ context }) {
 }
 
 export default {
-  onUpdate,
   onCreate,
   render,
 };

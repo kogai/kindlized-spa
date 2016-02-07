@@ -1,6 +1,11 @@
-import { BOOK_FETCH, BOOK_RECIEVE } from 'app/actionCreators/actionTypes';
+import {
+  BOOK_FETCH, BOOK_RECIEVE,
+  BOOK_REGISTER, BOOK_UN_REGISTER,
+} from 'app/actionCreators/actionTypes';
 
-const initialState = [];
+const initialState = {
+  books: [],
+};
 
 export default function panelReducer(state = initialState, action) {
   switch (action.type) {
@@ -8,7 +13,19 @@ export default function panelReducer(state = initialState, action) {
       return state;
 
     case BOOK_RECIEVE:
-      return action.body.books;
+      return {
+        books: action.body.books,
+      };
+
+    case BOOK_REGISTER:
+      return {
+        books: [].concat([action.body]).concat(state.books),
+      };
+
+    case BOOK_UN_REGISTER:
+      return {
+        books: state.books.filter((b)=> b._id !== action.body._id),
+      };
 
     default:
       return state;

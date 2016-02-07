@@ -1,9 +1,32 @@
-import { SEARCH_INPUT, SEARCH_CLICK } from 'app/actionCreators/actionTypes';
+import 'whatwg-fetch';
 
-export const searchClick = (dispatch)=> ()=> {
+import { SEARCH_INPUT, SEARCH_CLICK, SEARCH_RECIEVE } from 'app/actionCreators/actionTypes';
+
+function requestPromise(endpoint, input, dispatch) {
+  return new Promise((resolve, reject)=> {
+    fetch(`/api/search/${endpoint}?query=${input}`, {
+      credentials: 'include',
+    })
+    .then((res)=> res.json())
+    .then((json)=> resolve(dispatch({
+      type: SEARCH_RECIEVE,
+      books: json,
+    })))
+    .catch((err)=> reject(err));
+  });
+}
+
+export const searchClick = (dispatch, input)=> ()=> {
   dispatch({
     type: SEARCH_CLICK,
   });
+
+  Promise.all([
+    requestPromise('db', input, dispatch),
+    requestPromise('amazon', input, dispatch),
+  ])
+  .then((actions)=> console.log(actions))
+  .catch((err)=> console.log(err));
 };
 
 export const searchInput = (dispatch)=> (ev)=> {

@@ -14,7 +14,7 @@ const render = ({ props, dispatch, context })=> (
     <div class="input-group-btn">
       <button
         class={ `btn btn-default` }
-        onClick={ props.onClick(dispatch) }
+        onClick={ props.onClick(dispatch, context.search.body) }
         type="button"
       >
         <i class={ `fa fa-${props.icon} fa-fw` }></i>

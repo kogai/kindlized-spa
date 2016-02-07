@@ -4,12 +4,14 @@ import { element } from 'deku';
 
 import { objectToCss } from 'app/utils';
 import Loading from 'app/components/Loading';
+import { registerBook, unRegisterBook } from 'app/actionCreators/books';
 
 const loadingStyle = objectToCss({
   paddingBottom: '14px',
 });
 
-function render({ props }) {
+console.log(registerBook);
+function render({ props, dispatch }) {
   return (
     <li class="col-sm-8 col-md-3" style= { props.pannelStyle }>
       {
@@ -36,7 +38,17 @@ function render({ props }) {
             >
               Amazonで購入する
             </a>
-            <button class="btn btn-warning btn-xs">通知を解除</button>
+            {
+              props.isRegisterd ?
+              <button
+                onClick={ registerBook(dispatch, props) }
+                class="btn btn-info btn-xs"
+              >メール通知登録</button> :
+              <button
+                onClick={ unRegisterBook(dispatch, props) }
+                class="btn btn-warning btn-xs"
+              >通知を解除</button>
+            }
           </div>
         </div>
       }
