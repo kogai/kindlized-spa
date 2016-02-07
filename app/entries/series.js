@@ -2,7 +2,7 @@
 
 import { element } from 'deku';
 
-import { searchClick, searchInput } from 'app/actionCreators/search';
+import { editClick, editInput } from 'app/actionCreators/search';
 
 import Layout from 'app/components/Layout';
 import InputBox from 'app/components/InputBox';
@@ -17,10 +17,10 @@ function main() {
   render(
     <Layout>
       <InputBox
-        placeholder="検索したい書籍のタイトルを入力して下さい"
-        name="探す"
-        onClick={ searchClick } onInput={ searchInput }
-        type="search"
+        placeholder="編集"
+        name="編集"
+        onClick={ editClick } onInput={ editInput }
+        type="edit"
       />
       <Panels />
     </Layout>,
