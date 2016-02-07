@@ -37,5 +37,5 @@ function main() {
   );
 }
 
-store.subscribe(main);
 main();
+store.subscribe(main);

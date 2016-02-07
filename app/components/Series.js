@@ -3,6 +3,7 @@
 import { element } from 'deku';
 
 import { editClick, editInput } from 'app/actionCreators/edit';
+import { editSeries, deleteSeries } from 'app/actionCreators/series';
 import { objectToCss } from 'app/utils';
 
 import InputBox from 'app/components/InputBox';
@@ -22,7 +23,7 @@ const buttonStyle = objectToCss({
   fontSize: '14px',
 });
 
-function render({ props }) {
+function render({ dispatch, props }) {
   return (
     <li class="list-group-item">
       {
@@ -31,16 +32,22 @@ function render({ props }) {
           placeholder={ props.name }
           name="編集"
           onClick={ editClick } onInput={ editInput }
+          index={ props.index }
           type="edit"
           icon="edit"
         /> :
         <div style={ listStyle }>
           { props.name }
           <div style={ buttonsStyle }>
-            <button style={ buttonStyle } class="btn btn-default btn-sm">
+            <button
+              style={ buttonStyle } class="btn btn-default btn-sm"
+              onClick={ editSeries(dispatch, props) }
+            >
               <i class="fa fa-edit fa-fw"></i>編集
             </button>
-            <button style={ buttonStyle } class="btn btn-default btn-sm">
+            <button style={ buttonStyle } class="btn btn-default btn-sm"
+              onClick={ deleteSeries(dispatch, props) }
+            >
               <i class="fa fa-minus fa-fw"></i>削除
             </button>
           </div>

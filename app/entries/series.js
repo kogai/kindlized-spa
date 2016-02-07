@@ -2,7 +2,7 @@
 
 import { element } from 'deku';
 
-import { editClick, editInput } from 'app/actionCreators/edit';
+import { addSeries, seriesInput } from 'app/actionCreators/series';
 import { objectToCss } from 'app/utils';
 
 import Layout from 'app/components/Layout';
@@ -26,8 +26,8 @@ function main() {
         <InputBox
           placeholder="通知を受けたいシリーズを追加する"
           name="追加"
-          onClick={ editClick } onInput={ editInput }
-          type="edit"
+          onClick={ addSeries } onInput={ seriesInput }
+          type="series"
           icon="plus"
         />
       </div>
@@ -37,5 +37,5 @@ function main() {
   );
 }
 
-store.subscribe(main);
 main();
+store.subscribe(main);

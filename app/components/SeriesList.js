@@ -2,16 +2,23 @@
 
 import { element } from 'deku';
 
+import { fetchSeries } from 'app/actionCreators/series';
 import Series from 'app/components/Series';
+
+function onCreate({ dispatch }) {
+  fetchSeries(dispatch)();
+}
 
 function render({ context }) {
   return (
     <div>
       <h3>通知登録済のシリーズ一覧</h3>
+      { context.series.message }
       <ul class="list-group">
-        { context.series
-          .map((s)=> <Series
-            name={ s.name }
+        { context.series.books
+          .map((s, i)=> <Series
+            index={ i }
+            name={ s.seriesKeyword }
             isEditing={ s.isEditing }
           />)}
       </ul>
@@ -21,4 +28,5 @@ function render({ context }) {
 
 export default {
   render,
+  onCreate,
 };
