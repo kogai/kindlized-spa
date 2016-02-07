@@ -2,27 +2,36 @@
 
 import { element } from 'deku';
 
-import { editClick, editInput } from 'app/actionCreators/search';
+import { editClick, editInput } from 'app/actionCreators/edit';
+import { objectToCss } from 'app/utils';
 
 import Layout from 'app/components/Layout';
 import InputBox from 'app/components/InputBox';
-import Panels from 'app/components/Panels';
+import SeriesList from 'app/components/SeriesList';
 
 import {
   render,
   store,
 } from 'app/index';
 
+const inputBoxStyle = objectToCss({
+  margin: '20px 40px',
+  marginBottom: '30px',
+});
+
 function main() {
   render(
-    <Layout>
-      <InputBox
-        placeholder="編集"
-        name="編集"
-        onClick={ editClick } onInput={ editInput }
-        type="edit"
-      />
-      <Panels />
+    <Layout activePath="/series" >
+      <div style={ inputBoxStyle }>
+        <InputBox
+          placeholder="通知を受けたいシリーズを追加する"
+          name="追加"
+          onClick={ editClick } onInput={ editInput }
+          type="edit"
+          icon="plus"
+        />
+      </div>
+      <SeriesList />
     </Layout>,
     store.getState()
   );

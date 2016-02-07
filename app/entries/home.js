@@ -3,6 +3,7 @@
 import { element } from 'deku';
 
 import { searchClick, searchInput } from 'app/actionCreators/search';
+import { objectToCss } from 'app/utils';
 
 import Layout from 'app/components/Layout';
 import InputBox from 'app/components/InputBox';
@@ -13,15 +14,23 @@ import {
   store,
 } from 'app/index';
 
+const inputBoxStyle = objectToCss({
+  margin: '20px 40px',
+  marginBottom: '30px',
+});
+
 function main() {
   render(
-    <Layout>
-      <InputBox
-        placeholder="検索したい書籍のタイトルを入力して下さい"
-        name="探す"
-        onClick={ searchClick } onInput={ searchInput }
-        type="search"
-      />
+    <Layout activePath="/" >
+      <div style={ inputBoxStyle }>
+        <InputBox
+          placeholder="検索したい書籍のタイトルを入力して下さい"
+          name="探す"
+          onClick={ searchClick } onInput={ searchInput }
+          type="search"
+          icon="search"
+        />
+      </div>
       <Panels />
     </Layout>,
     store.getState()

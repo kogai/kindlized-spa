@@ -4,6 +4,7 @@ import search from './search';
 import menus from './menus';
 import panels from './panels';
 import account from './account';
+import series from './series';
 
 export default combineReducers({
   edit,
@@ -11,4 +12,5 @@ export default combineReducers({
   menus,
   panels,
   account,
+  series,
 });
