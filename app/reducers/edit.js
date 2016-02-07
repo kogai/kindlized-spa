@@ -1,4 +1,4 @@
-import { EDIT_INPUT, EDIT_CLICK } from 'app/constants';
+import { EDIT_INPUT, EDIT_CLICK } from 'app/actionCreators/actionTypes';
 
 const initialState = {
   body: '',

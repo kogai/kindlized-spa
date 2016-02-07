@@ -32,6 +32,7 @@ module.exports = function javascript() {
       extensions: ['.js'],
     })
     .transform('babelify')
+    .transform('envify')
     .bundle()
     .on('error', handleErrors)
     .pipe(plumber())

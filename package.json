@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.0",
     "deku": "^2.0.0-rc9",
+    "envify": "^3.4.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^5.0.0",
     "eslint-plugin-deku": "^3.1.2",
@@ -53,6 +54,7 @@
     "run-sequence": "^1.1.5",
     "sinon": "^1.17.3",
     "superagent": "^1.7.2",
+    "uglify": "^0.1.5",
     "validator": "^4.7.1",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"

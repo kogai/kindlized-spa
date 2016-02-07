@@ -1,4 +1,4 @@
-import { SEARCH_INPUT, SEARCH_CLICK } from 'app/constants';
+import { SEARCH_INPUT, SEARCH_CLICK } from 'app/actionCreators/actionTypes';
 
 const initialState = {
   body: '',
