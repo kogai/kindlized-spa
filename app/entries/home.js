@@ -5,6 +5,7 @@ import { element } from 'deku';
 import { editClick, editInput } from 'app/actionCreators/edit';
 import { searchClick, searchInput } from 'app/actionCreators/search';
 import InputBox from 'app/components/InputBox';
+import Menus from 'app/components/Menus';
 import {
   render,
   store,
@@ -23,6 +24,7 @@ function main() {
         onClick={ searchClick } onInput={ searchInput }
         type="search"
       />
+      <Menus activePath="/" />
     </div>,
     store.getState()
   );

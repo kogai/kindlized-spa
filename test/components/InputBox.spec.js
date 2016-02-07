@@ -5,16 +5,16 @@ import sinon from 'sinon';
 import { element } from 'deku';
 
 import { renderIntoDocument, createFakeEvent } from 'test/helpers/simulateDOM';
-import InputBox, { onInput } from 'app/components/InputBox';
-import myAction from 'app/actionCreators/myAction';
+import InputBox from 'app/components/InputBox';
+import { editClick, editInput } from 'app/actionCreators/edit';
 
 describe('Components: InputBox', ()=> {
-  const iconTypeMock = 'iconTypeMock';
+  const iconTypeMock = 'edit';
   const nameMock = 'nameMock';
   let node, button, input, clickSpy, onInputSpy;
   beforeEach(()=> {
-    clickSpy = sinon.spy(myAction);
-    onInputSpy = sinon.spy(onInput);
+    clickSpy = sinon.spy(editClick);
+    onInputSpy = sinon.spy(editInput);
     node = renderIntoDocument(
       <InputBox
         name={ nameMock }
@@ -28,11 +28,11 @@ describe('Components: InputBox', ()=> {
   });
 
   it('Should render name prop', ()=> {
-    assert(button.innerHTML === nameMock);
-    assert(button.className === `glyphicon-${iconTypeMock}`);
+    assert(button.innerHTML.match(nameMock));
+    assert(button.className.match('btn'));
   });
 
-  it.only('Can fire Action with onClick', ()=> {
+  it('Can fire Action with onClick', ()=> {
     button.click();
     assert(clickSpy.called);
   });
@@ -43,8 +43,12 @@ describe('Components: InputBox', ()=> {
     input.dispatchEvent(inputEvent);
     assert(onInputSpy.called);
   });
+
+  it.only('Should text inputed is delete when onClick called', ()=> {
+
+  });
+
   /*
   it.only('Should text inputed pass to onClick', ()=> {});
-  it.only('Should text inputed is delete when onClick called', ()=> {});
   */
 });
