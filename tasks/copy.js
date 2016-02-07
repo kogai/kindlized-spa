@@ -15,7 +15,7 @@ const cssPath = [
 module.exports = function copy() {
   const font$ = gulp.src(fontPath).pipe(gulp.dest(destPath.font));
   const css$ = gulp.src(cssPath).pipe(gulp.dest(destPath.stylesheet));
-  const html$ = gulp.src(`${srcPath.dir.app}/*.html`).pipe(gulp.dest(destPath.root));
+  // const html$ = gulp.src(`${srcPath.dir.app}/*.html`).pipe(gulp.dest(destPath.root));
 
-  return merge(font$, html$, css$).pipe(connect.reload());
+  return merge(font$, css$).pipe(connect.reload());
 };

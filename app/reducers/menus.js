@@ -10,8 +10,8 @@ const initialState = [
     icon: 'book',
   },
   {
-    name: 'アカウント',
-    link: '/account',
+    name: 'マイページ',
+    link: '/mypage',
     icon: 'user',
   },
 ];

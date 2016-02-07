@@ -23,7 +23,7 @@ module.exports = function javascript() {
   const bundles = [
     'home',
     'series',
-    'account',
+    'mypage',
   ];
 
   const bundles$ = bundles.map((bundle)=> {

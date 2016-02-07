@@ -8,6 +8,7 @@ import { objectToCss } from 'app/utils';
 import Layout from 'app/components/Layout';
 import InputBox from 'app/components/InputBox';
 import Panels from 'app/components/Panels';
+import Pagenation from 'app/components/Pagenation';
 
 import {
   render,
@@ -31,11 +32,13 @@ function main() {
           icon="search"
         />
       </div>
+      <Pagenation />
       <Panels />
+      <Pagenation />
     </Layout>,
     store.getState()
   );
 }
 
-store.subscribe(main);
 main();
+store.subscribe(main);

@@ -3,6 +3,8 @@
 import { element } from 'deku';
 
 import { objectToCss } from 'app/utils';
+import { fetchBooks } from 'app/actionCreators/books';
+
 import Panel from 'app/components/Panel';
 
 const pannelStyle = objectToCss({
@@ -29,6 +31,14 @@ const imgStyle = objectToCss({
   height: '160px',
 });
 
+function onCreate({ dispatch }) {
+  fetchBooks(dispatch)(1);
+}
+
+function onUpdate() {
+  console.log('onUpdate');
+}
+
 function render({ context }) {
   return (
     <ul class="row" style={ pannelsStyle }>
@@ -39,7 +49,7 @@ function render({ context }) {
           isLoading={ m.isLoading }
           url={ m.url }
           title={ m.title }
-          imgSrc={ m.imgSrc }
+          imgSrc={ m.images }
           titleStyle={ titleStyle }
           pannelStyle={ pannelStyle }
           buttonStyle={ buttonStyle }
@@ -51,5 +61,7 @@ function render({ context }) {
 }
 
 export default {
+  onUpdate,
+  onCreate,
   render,
 };

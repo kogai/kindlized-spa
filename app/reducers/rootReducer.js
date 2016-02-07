@@ -5,6 +5,7 @@ import menus from './menus';
 import panels from './panels';
 import account from './account';
 import series from './series';
+import page from './page';
 
 export default combineReducers({
   edit,
@@ -13,4 +14,5 @@ export default combineReducers({
   panels,
   account,
   series,
+  page,
 });

@@ -22,3 +22,4 @@ gulp.task('watch', ()=> {
 });
 
 gulp.task('default', ()=> runSequence('build', ['server', 'watch']));
+gulp.task('dev', ()=> runSequence('build', ['watch']));
