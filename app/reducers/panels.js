@@ -10,7 +10,7 @@ const initialState = [
     title: 'アバンチュリエ(4) (イブニングKC)',
     url: 'http://goo.gl/HJxN6C/',
     imgSrc: 'http://ecx.images-amazon.com/images/I/515btz%2B9xRL._SL160_.jpg',
-    isKindlized: false,
+    isKindlized: true,
     isRegistered: true,
   },
 ];

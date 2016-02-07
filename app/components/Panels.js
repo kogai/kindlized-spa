@@ -5,12 +5,14 @@ import { element } from 'deku';
 import { objectToCss } from 'app/utils';
 import Panel from 'app/components/Panel';
 
+const pannelStyle = objectToCss({
+  textAlign: 'center',
+});
+
 const buttonStyle = objectToCss({
   display: 'block',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  marginTop: '8px',
-  width: '160px',
+  margin: '8px auto',
+  width: '140px',
 });
 
 const titleStyle = objectToCss({
@@ -33,6 +35,7 @@ function render({ context }) {
           title={ m.title }
           imgSrc={ m.imgSrc }
           titleStyle={ titleStyle }
+          pannelStyle={ pannelStyle }
           buttonStyle={ buttonStyle }
         />)
       }

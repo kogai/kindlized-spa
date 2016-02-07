@@ -12,6 +12,7 @@ function render({ props, context }) {
           isActive={ props.activePath === m.link }
           link={ m.link }
           name={ m.name }
+          icon={ m.icon }
         />)
       }
     </ul>
