@@ -1,5 +1,6 @@
 const initialState = {
   isLogin: true,
+  mailAddress: 'test@test.com',
   button: [
     {
       name: 'ログイン',
