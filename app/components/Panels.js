@@ -24,6 +24,11 @@ const pannelsStyle = objectToCss({
   width: '100%',
 });
 
+const imgStyle = objectToCss({
+  display: 'block',
+  height: '160px',
+});
+
 function render({ context }) {
   return (
     <ul class="row" style={ pannelsStyle }>
@@ -31,12 +36,14 @@ function render({ context }) {
         context.panels.map((m)=> <Panel
           isKindlized={ m.isKindlized }
           isRegisterd={ m.isRegisterd }
+          isLoading={ m.isLoading }
           url={ m.url }
           title={ m.title }
           imgSrc={ m.imgSrc }
           titleStyle={ titleStyle }
           pannelStyle={ pannelStyle }
           buttonStyle={ buttonStyle }
+          imgStyle={ imgStyle }
         />)
       }
     </ul>
