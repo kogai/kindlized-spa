@@ -4,6 +4,7 @@ const notify = require('gulp-notify');
 const connect = require('gulp-connect');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
+const merge = require('merge-stream');
 
 const config = require('tasks/config');
 const srcPath = config.srcPath;
@@ -18,20 +19,26 @@ function handleErrors() {
   this.emit('end');
 }
 
-function javascript() {
-  const b = browserify({
-    entries: srcPath.entries,
-    extensions: ['.js'],
-  });
+module.exports = function javascript() {
+  const bundles = [
+    'home',
+    'series',
+  ];
 
-  return b
+  const bundles$ = bundles.map((bundle)=> {
+    const b = browserify({
+      entries: `${srcPath.entries}/${bundle}.js`,
+      extensions: ['.js'],
+    })
     .transform('babelify')
     .bundle()
     .on('error', handleErrors)
     .pipe(plumber())
-    .pipe(source('bundle.min.js'))
-    .pipe(gulp.dest(destPath.app))
-    .pipe(connect.reload());
-}
+    .pipe(source(`${bundle}.bundle.min.js`))
+    .pipe(gulp.dest(destPath.app));
 
-module.exports = javascript;
+    return b;
+  });
+
+  return merge(bundles$).pipe(connect.reload());
+};

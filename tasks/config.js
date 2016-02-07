@@ -22,7 +22,7 @@ const srcPath = {
     image: `${srcRoot}/images`,
   },
   entries: [
-    `${srcRoot}/app/entries/home.js`,
+    `${srcRoot}/app/entries`,
   ],
   app: [
     `${srcRoot}/app/*`,
