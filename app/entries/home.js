@@ -6,6 +6,8 @@ import { editClick, editInput } from 'app/actionCreators/edit';
 import { searchClick, searchInput } from 'app/actionCreators/search';
 import InputBox from 'app/components/InputBox';
 import Menus from 'app/components/Menus';
+import Panels from 'app/components/Panels';
+
 import {
   render,
   store,
@@ -25,6 +27,7 @@ function main() {
         type="search"
       />
       <Menus activePath="/" />
+      <Panels />
     </div>,
     store.getState()
   );

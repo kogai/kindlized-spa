@@ -48,7 +48,10 @@ const srcPath = {
 };
 
 srcPath.javascript = srcPath.app;
-srcPath.copy = srcPath.font.concat[`${srcPath.root}/*.html`];
+srcPath.copy = srcPath.font
+  .concat([`${srcPath.root}/app/*.html`])
+  .concat([`${srcPath.root}/app/*.css`]);
+
 exports.srcPath = srcPath;
 
 exports.destPath = {

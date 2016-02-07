@@ -7,7 +7,10 @@ const srcPath = config.srcPath;
 const destPath = config.destPath;
 
 const fontPath = 'node_modules/font-awesome/fonts/*';
-const cssPath = 'node_modules/font-awesome/css/*.min.css';
+const cssPath = [
+  'node_modules/font-awesome/css/*.min.css',
+  'app/style.css',
+];
 
 module.exports = function copy() {
   const font$ = gulp.src(fontPath).pipe(gulp.dest(destPath.font));
