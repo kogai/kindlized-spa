@@ -18,6 +18,7 @@ function render({ context }) {
         { context.series.books
           .map((s, i)=> <Series
             index={ i }
+            textContainer={ s.textContainer }
             name={ s.seriesKeyword }
             isEditing={ s.isEditing }
           />)}

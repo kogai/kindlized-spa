@@ -10,7 +10,6 @@ const loadingStyle = objectToCss({
   paddingBottom: '14px',
 });
 
-console.log(registerBook);
 function render({ props, dispatch }) {
   return (
     <li class="col-sm-8 col-md-3" style= { props.pannelStyle }>

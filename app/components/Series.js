@@ -2,8 +2,8 @@
 
 import { element } from 'deku';
 
-import { editClick, editInput } from 'app/actionCreators/edit';
-import { editSeries, deleteSeries } from 'app/actionCreators/series';
+// import { editInput } from 'app/actionCreators/edit';
+import { toggleSeries, editSeries, inputEditSeries, deleteSeries } from 'app/actionCreators/series';
 import { objectToCss } from 'app/utils';
 
 import InputBox from 'app/components/InputBox';
@@ -31,7 +31,8 @@ function render({ dispatch, props }) {
         <InputBox
           placeholder={ props.name }
           name="編集"
-          onClick={ editClick } onInput={ editInput }
+          onClick={ editSeries } onInput={ inputEditSeries }
+          editable={ props }
           index={ props.index }
           type="edit"
           icon="edit"
@@ -41,7 +42,7 @@ function render({ dispatch, props }) {
           <div style={ buttonsStyle }>
             <button
               style={ buttonStyle } class="btn btn-default btn-sm"
-              onClick={ editSeries(dispatch, props) }
+              onClick={ toggleSeries(dispatch, props) }
             >
               <i class="fa fa-edit fa-fw"></i>編集
             </button>

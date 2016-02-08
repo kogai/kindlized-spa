@@ -1,16 +1,8 @@
-import {
-  EDIT_INPUT, EDIT_CLICK,
-  EDIT_RECIEVE,
-} from 'app/actionCreators/actionTypes';
+import 'whatwg-fetch';
 
-export const editClick = (dispatch, input, editableIndex)=> ()=> {
-  dispatch({
-    type: EDIT_CLICK,
-    body: {
-      editableIndex,
-    },
-  });
-};
+import {
+  EDIT_INPUT,
+} from 'app/actionCreators/actionTypes';
 
 export const editInput = (dispatch)=> (ev)=> {
   dispatch({

@@ -16,14 +16,14 @@ function requestPromise(endpoint, input, dispatch) {
   });
 }
 
-export const searchClick = (dispatch, input)=> ()=> {
+export const searchClick = (dispatch, editable)=> ()=> {
   dispatch({
     type: SEARCH_CLICK,
   });
 
   Promise.all([
-    requestPromise('db', input, dispatch),
-    requestPromise('amazon', input, dispatch),
+    requestPromise('db', editable.body, dispatch),
+    requestPromise('amazon', editable.body, dispatch),
   ])
   .then((actions)=> console.log(actions))
   .catch((err)=> console.log(err));

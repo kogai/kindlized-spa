@@ -1,5 +1,5 @@
 import {
-  EDIT_INPUT, EDIT_CLICK,
+  EDIT_INPUT, SERIES_EDIT_CLICK,
 } from 'app/actionCreators/actionTypes';
 
 const initialState = {
@@ -12,7 +12,7 @@ export default function editReducer(state = initialState, action) {
       return {
         body: action.body,
       };
-    case EDIT_CLICK:
+    case SERIES_EDIT_CLICK:
       return {
         body: '',
       };

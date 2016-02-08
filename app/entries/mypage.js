@@ -2,7 +2,7 @@
 
 import { element } from 'deku';
 
-import { editClick, editInput } from 'app/actionCreators/edit';
+import { editSeries, editInput } from 'app/actionCreators/edit';
 import { objectToCss } from 'app/utils';
 
 import Layout from 'app/components/Layout';
@@ -27,7 +27,7 @@ function main() {
         <InputBox
           placeholder="通知用のメールアドレスを変更する"
           name="変更"
-          onClick={ editClick } onInput={ editInput }
+          onClick={ editSeries } onInput={ editInput }
           type="edit"
           icon="edit"
         />

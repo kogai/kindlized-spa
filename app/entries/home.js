@@ -27,6 +27,8 @@ function main() {
         <InputBox
           placeholder="検索したい書籍のタイトルを入力して下さい"
           name="探す"
+          editable={ store.getState().search }
+          input={ store.getState().search.body }
           onClick={ searchClick } onInput={ searchInput }
           type="search"
           icon="search"

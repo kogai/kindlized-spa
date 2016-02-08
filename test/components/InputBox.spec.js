@@ -6,14 +6,14 @@ import { element } from 'deku';
 
 import { renderIntoDocument, createFakeEvent } from 'test/helpers/simulateDOM';
 import InputBox from 'app/components/InputBox';
-import { editClick, editInput } from 'app/actionCreators/edit';
+import { editSeries, editInput } from 'app/actionCreators/edit';
 
 describe('Components: InputBox', ()=> {
   const iconTypeMock = 'edit';
   const nameMock = 'nameMock';
   let node, button, input, clickSpy, onInputSpy;
   beforeEach(()=> {
-    clickSpy = sinon.spy(editClick);
+    clickSpy = sinon.spy(editSeries);
     onInputSpy = sinon.spy(editInput);
     node = renderIntoDocument(
       <InputBox

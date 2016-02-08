@@ -2,7 +2,7 @@
 
 import { element } from 'deku';
 
-import { addSeries, seriesInput } from 'app/actionCreators/series';
+import { addSeries, inputAddSeries } from 'app/actionCreators/series';
 import { objectToCss } from 'app/utils';
 
 import Layout from 'app/components/Layout';
@@ -26,7 +26,9 @@ function main() {
         <InputBox
           placeholder="通知を受けたいシリーズを追加する"
           name="追加"
-          onClick={ addSeries } onInput={ seriesInput }
+          editable={ store.getState().series }
+          input={ store.getState().series.body }
+          onClick={ addSeries } onInput={ inputAddSeries }
           type="series"
           icon="plus"
         />

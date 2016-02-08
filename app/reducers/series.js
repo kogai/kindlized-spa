@@ -2,8 +2,8 @@ import {
   SERIES_INPUT, SERIES_CLICK,
   SERIES_REGISTER, SERIES_UN_REGISTER,
   SERIES_FETCH, SERIES_RECIEVE,
-  SERIES_EDIT,
-  EDIT_CLICK,
+  SERIES_TOGGLE,
+  SERIES_EDIT_CLICK, SERIES_EDIT_INPUT,
 } from 'app/actionCreators/actionTypes';
 
 const initialState = {
@@ -20,7 +20,7 @@ export default function seriesReducer(state = initialState, action) {
     case SERIES_RECIEVE:
       return {
         body: state.body,
-        books: action.body.map((s)=> Object.assign({}, s, { isEditing: false })),
+        books: action.body.map((s)=> Object.assign({}, s, { isEditing: false, textContainer: '' })),
         message: state.message,
       };
 
@@ -54,21 +54,32 @@ export default function seriesReducer(state = initialState, action) {
         message: initialState.message,
       };
 
-    case SERIES_EDIT:
+    case SERIES_TOGGLE:
       return {
         body: state.body,
         books: state.books
           .map((b)=> b.seriesKeyword === action.body.books.name ?
-          Object.assign({}, b, { isEditing: true }) : b),
+          Object.assign({}, b, { isEditing: true, textContainer: b.seriesKeyword }) : b),
         message: state.message,
       };
 
-    case EDIT_CLICK:
+    case SERIES_EDIT_INPUT:
       return {
         body: state.body,
-        books: state.books
-          .map((b, i)=> i === action.body.editableIndex ?
-          Object.assign({}, b, { isEditing: false }) : b),
+        books: state.books.map((b, i)=> (
+          i === action.body.index ?
+          Object.assign({}, b, { textContainer: action.body.textContainer }) : b
+        )),
+        message: state.message,
+      };
+
+    case SERIES_EDIT_CLICK:
+      return {
+        body: state.body,
+        books: state.books.map((b, i)=> (
+          i === action.body.index ?
+          Object.assign({}, b, { isEditing: false }) : b
+        )),
         message: state.message,
       };
 

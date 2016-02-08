@@ -4,7 +4,8 @@ import {
   SERIES_INPUT, SERIES_CLICK,
   SERIES_REGISTER, SERIES_UN_REGISTER,
   SERIES_FETCH, SERIES_RECIEVE,
-  SERIES_EDIT,
+  SERIES_TOGGLE,
+  SERIES_EDIT_CLICK, SERIES_EDIT_INPUT,
 } from 'app/actionCreators/actionTypes';
 
 export const fetchSeries = (dispatch)=> ()=> {
@@ -23,14 +24,14 @@ export const fetchSeries = (dispatch)=> ()=> {
   .catch((err)=> console.log(err));
 };
 
-export const seriesInput = (dispatch)=> (ev)=> {
+export const inputAddSeries = (dispatch)=> (ev)=> {
   dispatch({
     type: SERIES_INPUT,
     body: ev.target.value,
   });
 };
 
-export const addSeries = (dispatch, input)=> ()=> {
+export const addSeries = (dispatch, editable)=> ()=> {
   dispatch({
     type: SERIES_CLICK,
   });
@@ -38,7 +39,7 @@ export const addSeries = (dispatch, input)=> ()=> {
   fetch('/api/user/series', {
     method: 'POST',
     credentials: 'include',
-    body: JSON.stringify({ query: input }),
+    body: JSON.stringify({ query: editable.body }),
     headers: {
       'Content-Type': 'application/json',
     },
@@ -54,13 +55,47 @@ export const addSeries = (dispatch, input)=> ()=> {
   .catch((err)=> console.log(err));
 };
 
-export const editSeries = (dispatch, series)=> ()=> {
+export const toggleSeries = (dispatch, series)=> ()=> {
   dispatch({
-    type: SERIES_EDIT,
+    type: SERIES_TOGGLE,
     body: {
       books: series,
     },
   });
+};
+
+export const inputEditSeries = (dispatch, editable, index)=> (ev)=> {
+  dispatch({
+    type: SERIES_EDIT_INPUT,
+    body: {
+      textContainer: ev.target.value,
+      index,
+    },
+  });
+};
+
+export const editSeries = (dispatch, editable, index)=> ()=> {
+  dispatch({
+    type: SERIES_EDIT_CLICK,
+    body: {
+      index,
+    },
+  });
+
+  fetch(`/api/user/series`, {
+    method: 'PUT',
+    credentials: 'include',
+    body: JSON.stringify(editable),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  .then((res)=> res.json())
+  .then((json)=> dispatch({
+    type: SERIES_RECIEVE,
+    body: json,
+  }))
+  .catch((err)=> console.log(err));
 };
 
 export const deleteSeries = (dispatch, series)=> ()=> {
