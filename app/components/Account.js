@@ -1,6 +1,11 @@
 /** @jsx element */
 
 import { element } from 'deku';
+import { emailFetch } from 'app/actionCreators/account';
+
+function onCreate({ dispatch }) {
+  emailFetch(dispatch)();
+}
 
 function render({ context }) {
   return (
@@ -9,5 +14,6 @@ function render({ context }) {
 }
 
 export default {
+  onCreate,
   render,
 };

@@ -2,7 +2,7 @@
 
 import { element } from 'deku';
 
-import { editSeries, editInput } from 'app/actionCreators/edit';
+import { emailInput, emailClick } from 'app/actionCreators/account';
 import { objectToCss } from 'app/utils';
 
 import Layout from 'app/components/Layout';
@@ -27,8 +27,11 @@ function main() {
         <InputBox
           placeholder="通知用のメールアドレスを変更する"
           name="変更"
-          onClick={ editSeries } onInput={ editInput }
-          type="edit"
+          editable={ store.getState().account }
+          onClick={ emailClick } onInput={ emailInput }
+          validator="isEmail"
+          vaidateMessage="メールアドレスを入力して下さい"
+          type="email"
           icon="edit"
         />
       </div>

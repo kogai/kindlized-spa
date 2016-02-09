@@ -20,3 +20,9 @@ export const SERIES_UN_REGISTER = 'SERIES_UN_REGISTER';
 export const SERIES_TOGGLE = 'SERIES_TOGGLE';
 export const SERIES_EDIT_CLICK = 'SERIES_EDIT_CLICK';
 export const SERIES_EDIT_INPUT = 'SERIES_EDIT_INPUT';
+
+export const EMAIL_RECIEVE = 'EMAIL_RECIEVE';
+export const EMAIL_INPUT = 'EMAIL_INPUT';
+export const EMAIL_MODIFY = 'EMAIL_MODIFY';
+
+export const LOG_OUT = 'LOG_OUT';

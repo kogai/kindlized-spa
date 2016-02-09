@@ -23,13 +23,14 @@ module.exports = function javascript() {
   const bundles = [
     'home',
     'series',
-    'mypage',
+    'account',
   ];
 
   const bundles$ = bundles.map((bundle)=> {
     const b = browserify({
       entries: `${srcPath.entries}/${bundle}.js`,
       extensions: ['.js'],
+      debug: process.env.NODE_ENV !== 'production',
     })
     .transform('babelify')
     .transform('envify')

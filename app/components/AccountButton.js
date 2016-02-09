@@ -1,13 +1,22 @@
 /** @jsx element */
 
 import { element } from 'deku';
+import { logout } from 'app/actionCreators/account';
 
-function render({ props }) {
+function render({ dispatch, props }) {
   return (
     <li style={ props.style }>
-      <a href={ props.link } class={ `btn btn-${props.class}` }>
-        { props.name }
-      </a>
+    {
+      props.methodName ? (
+        <button onClick={ logout(dispatch) } class={ `btn btn-${props.class}` }>
+          { props.name }
+        </button>
+      ) : (
+        <a href={ props.link } class={ `btn btn-${props.class}` }>
+          { props.name }
+        </a>
+      )
+    }
     </li>
   );
 }

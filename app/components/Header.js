@@ -3,6 +3,7 @@
 import { element } from 'deku';
 import AccountButton from 'app/components/AccountButton';
 import { objectToCss } from 'app/utils';
+import { logout } from 'app/actionCreators/account';
 
 const headerStyle = objectToCss({
   display: 'flex',
@@ -47,6 +48,7 @@ function render({ context }) {
             .filter((m)=> m.isLogin === context.account.isLogin)
             .map((b)=> <AccountButton
               link={ b.link }
+              methodName={ b.methodName }
               class={ b.class }
               name={ b.name }
               style={ listStyle }

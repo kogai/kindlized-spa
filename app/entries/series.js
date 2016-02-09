@@ -27,7 +27,6 @@ function main() {
           placeholder="通知を受けたいシリーズを追加する"
           name="追加"
           editable={ store.getState().series }
-          input={ store.getState().series.body }
           onClick={ addSeries } onInput={ inputAddSeries }
           type="series"
           icon="plus"
