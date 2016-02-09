@@ -3,6 +3,7 @@ import { SEARCH_INPUT, SEARCH_CLICK, SEARCH_RECIEVE } from 'app/actionCreators/a
 const initialState = {
   body: '',
   books: [],
+  isLoading: false,
 };
 
 export default function searchReducer(state = initialState, action) {
@@ -11,11 +12,13 @@ export default function searchReducer(state = initialState, action) {
       return {
         body: action.body,
         books: state.books,
+        isLoading: state.isLoading,
       };
     case SEARCH_CLICK:
       return {
         body: initialState.body,
         books: initialState.books,
+        isLoading: true,
       };
     case SEARCH_RECIEVE:
       return {
@@ -24,6 +27,7 @@ export default function searchReducer(state = initialState, action) {
           .map((b)=> (Object.assign({}, b, {
             isRegisterd: true,
           }))),
+        isLoading: initialState.isLoading,
       };
     default:
       return state;

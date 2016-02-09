@@ -9,6 +9,7 @@ import Layout from 'app/components/Layout';
 import InputBox from 'app/components/InputBox';
 import Panels from 'app/components/Panels';
 import Pagenation from 'app/components/Pagenation';
+import Loading from 'app/components/Loading';
 
 import {
   render,
@@ -21,18 +22,20 @@ const inputBoxStyle = objectToCss({
 });
 
 function main() {
+  const context = store.getState().search;
   render(
     <Layout activePath="/" >
       <div style={ inputBoxStyle }>
         <InputBox
           placeholder="検索したい書籍のタイトルを入力して下さい"
           name="探す"
-          editable={ store.getState().search }
+          editable={ context }
           onClick={ searchClick } onInput={ searchInput }
           type="search"
           icon="search"
         />
       </div>
+      { context.isLoading ? <Loading /> : '' }
       <Panels iterateTo="search" />
       <Pagenation />
       <Panels iterateTo="panels" />

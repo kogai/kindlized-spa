@@ -32,7 +32,7 @@ function render({ props, dispatch }) {
           isValid={ props.editable.isValid }
           vaidateMessage={ props.vaidateMessage }
         /> :
-        null
+        ''
       }
     </section>
   );
